@@ -1,0 +1,232 @@
+.swipeable-card-list {
+  overflow: hidden; /* Prevent description overflow from affecting layout */
+  position: relative;
+}
+
+.products-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  max-width: 991px;
+}
+
+.product-desc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  color: white;
+  padding: 10px;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.product-desc.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-desc.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.scaled-font-lg {
+  font-size: 0.875rem;
+}
+.scaled-font-sm {
+  font-size: 0.475rem;
+}
+.scaled-font-md {
+  font-size: 0.675rem;
+}
+
+.product-card-container {
+  background: #16161d;
+  padding: 10px;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  max-width: 200px;
+  z-index: 1;
+  position: relative;
+  flex-grow: 1;
+  transform: scale(1);
+  transform-origin: center center;
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.product-card-container.expanded {
+  z-index: 99 !important;
+  position: relative;
+  transform: scale(1.6);
+  transform-origin: center center;
+  transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.fs-reg {
+  font-size: 0.875rem;
+}
+
+.slick-arrow {
+  z-index: 999 !important;
+}
+
+.fs-small {
+  font-size: 0.785rem;
+}
+
+.swipeable-card-list {
+  z-index: 1;
+  position: relative;
+}
+
+.slick-list {
+  overflow: visible !important;
+}
+
+.slick-slide {
+  margin: 0 8px;
+}
+
+.boxart-rounded .fallback-text-container {
+  border-radius: 4px;
+}
+
+.boxart-image-in-padded-container {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.fallback-text-container {
+  background-color: #222;
+  background-image: linear-gradient(transparent, #000);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: -1;
+}
+/* Slider handle */
+/* {
+  bottom: 0;
+    color: #fff;
+    display: flex
+;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 4%;
+    z-index: 20;
+} */
+
+.slick-slider {
+  min-height: 402px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slick-initialized .slick-slide {
+  width: auto !important;
+}
+.prodcuts-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card-container .MuiPaper-root {
+  background: #16161d;
+}
+
+.product-card-container .MuiPaper-elevation {
+  border: none !important;
+  box-shadow: none;
+}
+
+.product-card-container .MuiCardContent-root {
+  background: #16161d;
+  color: #fff;
+  margin: 0.5rem 0rem;
+  flex-grow: 1;
+}
+
+.product-card-container h6 {
+  font-weight: 600;
+}
+
+.button-main {
+  background: transparent;
+  color: #fff;
+  font-size: 0.875rem;
+  border-width: thin;
+  border-style: solid;
+  border-color: #8aaba1;
+  width: 100%;
+  padding: 8px 0px;
+  border-radius: 10px;
+  margin-bottom: 0.85rem;
+}
+
+.cart-icon-wrapper svg {
+  display: inline !important;
+}
+
+@media all and (max-width: 1168px) {
+  .products-container {
+    max-width: 991px;
+  }
+}
+
+@media all and (min-width: 992px) {
+}
+
+@media all and (max-width: 991px) {
+  .product-card-container {
+    max-width: 350px;
+  }
+
+  .ad-head-col-left {
+    display: none;
+  }
+
+  .products-container {
+    max-width: 768px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  header {
+    position: sticky;
+  }
+
+  .products-container h2 {
+    text-align: center;
+    padding: 20px 0px;
+  }
+
+  .menuWrapper {
+    border: none;
+  }
+
+  .ad-head-col-right {
+    background-color: #030712;
+  }
+}

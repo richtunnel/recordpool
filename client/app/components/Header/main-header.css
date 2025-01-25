@@ -1,0 +1,49 @@
+.menuWrapper {
+  width: 100%;
+  position: relative;
+  clear: both;
+  margin-top: 20px;
+  max-width: 1280px;
+  margin: 5px auto;
+}
+
+.mh-col-right {
+  justify-content: flex-end;
+  display: flex;
+}
+
+.main-header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 50px;
+  max-width: 1280px;
+    margin: 0 auto;
+}
+
+.main-header.row {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1280px;
+}
+
+.main-header-menu {
+  display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+.cart-icon-wrapper{
+  position: relative;
+  top: -0.5px;
+  font-size: 1.15rem;
+  right: 8px;
+  color: #bebebe;
+
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+}

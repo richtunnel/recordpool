@@ -1,0 +1,23 @@
+.adHeader {
+  position: relative;
+  top: 0;
+  padding: 0px 0px;
+  background: transparent;
+  width: 100%;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  margin-bottom: 0;
+}
+
+.main-ad-header p {
+  font-size: 0.875rem;
+}
+
+.ad-head-col-left {
+  padding: 8px 0px;
+  margin: 0 auto;
+  background: #16161d;
+}
