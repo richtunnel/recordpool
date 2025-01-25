@@ -1,11 +1,21 @@
 import React, { useEffect, useState, useRef } from "react";
 import { LoaderFunction } from "@remix-run/node";
 import { Container, Row, Col } from "react-bootstrap";
+import { useTheme } from "@mui/material/styles";
 import Slider from "react-slick";
+import Box from "@mui/material/Box";
 import { Card, CardContent, CardMedia, Button, Typography } from "@mui/material";
 import "../styles/products.css";
 import SwipeCatNew from "~/components/swipeable-card/SwipeCatNew";
 import SwipeComponent from "~/components/swipeable-card/SwipeComponent";
+import { IoPlaySkipForward } from "react-icons/io5";
+import { FaPlayCircle } from "react-icons/fa";
+import { IoPlaySkipBackSharp } from "react-icons/io5";
+import IconButton from "@mui/material/IconButton";
+import { IoAdd } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
+import AudioPlayer from "../components/Audio/AudioPlayer";
 
 interface Product {
   id: number;
@@ -14,6 +24,32 @@ interface Product {
   price: number;
   img?: string;
 }
+
+interface Track {
+  title: string;
+  artist: string;
+  audioSrc?: string;
+  image?: string;
+  color?: string;
+}
+
+const tracks: Track[] = [
+  {
+    title: "Cali",
+    artist: "Wataboi",
+    color: "#00aeb0",
+  },
+  {
+    title: "50",
+    artist: "tobylane",
+    color: "#ffb77a",
+  },
+  {
+    title: "I Wonder",
+    artist: "DreamHeaven",
+    color: "#5f9fff",
+  },
+];
 
 const products: Product[] = [
   { id: 1, name: "Album 1", description: "Description of Album 1", price: 9.99, img: "assets/images/album-art/album-art.png" },
@@ -53,6 +89,7 @@ const SwipeableCardList: React.FC = () => {
   const [isClient, setIsClient] = useState<boolean>(false);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
+  const theme = useTheme();
 
   useEffect(() => {
     setIsClient(true);
@@ -68,6 +105,8 @@ const SwipeableCardList: React.FC = () => {
     arrows: true, // Show arrows for navigation
     swipe: true, // Enable swipe gestures
     touchMove: true, // Allow touch interaction
+    nextArrow: <FaChevronRight color="#fff" />,
+    prevArrow: <FaChevronLeft color="#fff" />,
     responsive: [
       {
         breakpoint: 1024, // For screen sizes <= 1024px
@@ -76,6 +115,21 @@ const SwipeableCardList: React.FC = () => {
       {
         breakpoint: 768, // For screen sizes <= 768px
         settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
       },
     ],
   };
@@ -133,9 +187,34 @@ const SwipeableCardList: React.FC = () => {
             >
               <CardMedia component="img" alt={product.name} height="200" image={product.img} sx={{ objectFit: "cover" }} />
               <div className={`product-desc ${hoveredCard === product.id ? "visible" : "hidden"}`}>
-                <p className="scaled-font-lg">{product.name}</p>
+                {/* <p className="scaled-font-lg">{product.name}</p>
                 <p className="scaled-font-md">{product.description}</p>
-                <p className="scaled-font-md">{product.price}</p>
+                <p className="scaled-font-md">{product.price}</p> */}
+
+                <Card className="product-subdesc-card" style={{ display: "flex" }}>
+                  <Box className="product-sub-box" style={{ display: "flex", flexDirection: "column", maxWidth: "83%" }}>
+                    <CardContent style={{ flex: "1 0 auto" }}>
+                      <div className="scaled-font-lg">{product.name}</div>
+                      <div className="scaled-font-sm">{product.description}</div>
+                      <div className="scaled-font-sm">${product.price}</div>
+                    </CardContent>
+                    <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
+                      <div className="play-icon-wrapper">
+                        <div>
+                          {/* <IconButton aria-label="play/pause">
+                            <FaPlayCircle style={{ height: "20px", width: "20px" }} />
+                          </IconButton> */}
+
+                          <AudioPlayer tracks={tracks} />
+                        </div>
+                      </div>
+                    </Box>
+                  </Box>
+                  <div className="product-action-div d-flex flex-column">
+                    <IoAdd className="product-desc-add-icon" />
+                    <FaHeart className="product-desc-heart-icon" />
+                  </div>
+                </Card>
               </div>
             </Card>
           </div>
